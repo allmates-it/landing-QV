@@ -31,12 +31,15 @@
             border-radius: 2px;
         }
         
-        /* FIX INFALLIBILE PER I MENU A TENDINA (HOVER CSS) */
+        /* FIX INFALLIBILE PER I MENU A TENDINA (HOVER E POSIZIONAMENTO) */
         .nav-dropdown:hover .w-dropdown-list {
             display: block !important;
             opacity: 1 !important;
             visibility: visible !important;
-            transform: none !important;
+            /* Le due righe seguenti centrano perfettamente il menu sotto l'etichetta */
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            top: 100% !important; 
             transition: opacity 0.2s ease;
         }
 
