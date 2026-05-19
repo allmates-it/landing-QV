@@ -2,180 +2,111 @@
 <html data-wf-domain="www.allmates.ai" data-wf-page="69b8d32b03ce13513e236b99" data-wf-site="69b8d32a03ce13513e236a94" lang="it">
     
 <head>
+    <base href="https://www.allmates.ai/"/>
     <meta charset="utf-8"/>
-    <title>Qlik Action Layer | allmates.ai Italia</title>
+    <title>Allmates | L'Action Layer per Qlik</title>
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <link crossorigin="anonymous" href="https://cdn.prod.website-files.com/69b8d32a03ce13513e236a94/css/allmates-ai.webflow.shared.66d0dc7c4.min.css" rel="stylesheet" type="text/css"/>
     <link href="https://cdn.prod.website-files.com/69b8d32a03ce13513e236a94/69b8e3273f2a65e36e325a08_favicon-light-2.png" rel="shortcut icon" type="image/x-icon"/>
-    
-    <!-- Google Fonts per tipografia pulita -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
     <style>
-        :root {
-            --allmates-gradient: linear-gradient(90deg, #9DE3FD 0%, #70AFED 25%, #888CE9 50%, #B393E3 70%, #E3AFA0 85%, #E28675 100%);
-            --bg-dark: #0b0b0f;
-            --text-main: #ffffff;
-            --text-muted: #a1a1aa;
-            --border-light: rgba(255, 255, 255, 0.1);
+        body { background-color: #0b0b0f; color: #ffffff; overflow-x: hidden; font-family: sans-serif; scroll-behavior: smooth; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 30px;
         }
-
-        body { 
-            background-color: var(--bg-dark); 
-            color: var(--text-main); 
-            overflow-x: hidden; 
-            font-family: 'Inter', sans-serif; 
-            -webkit-font-smoothing: antialiased;
+        .gradient-text {
+            background: linear-gradient(90deg, #9DE3FD 0%, #70AFED 25%, #888CE9 50%, #B393E3 70%, #E3AFA0 85%, #E28675 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
+        .accent-line {
+            width: 3px;
+            height: 24px;
+            background: linear-gradient(to bottom, #70AFED, #E3AFA0);
+            display: inline-block;
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+        
         /* FIX INFALLIBILE PER I MENU A TENDINA (HOVER E POSIZIONAMENTO) */
         .nav-dropdown:hover .w-dropdown-list {
             display: block !important;
             opacity: 1 !important;
             visibility: visible !important;
+            /* Le due righe seguenti centrano perfettamente il menu sotto l'etichetta */
             left: 50% !important;
             transform: translateX(-50%) !important;
             top: 100% !important; 
             transition: opacity 0.2s ease;
         }
 
-        /* Layout & Utilities per allineamento esatto all'originale */
-        .custom-container {
-            width: 100%;
-            max-width: 1240px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .text-center { text-align: center; }
-        
-        .gradient-text {
-            background: var(--allmates-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-        }
-
-        .badge-pill {
-            display: inline-block;
-            padding: 6px 16px;
-            border-radius: 50px;
-            background: rgba(136, 140, 233, 0.1);
-            color: #888CE9;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(136, 140, 233, 0.2);
-        }
-
-        /* Bottoni */
-        .btn-custom {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 16px 32px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 16px;
-            text-decoration: none;
+        /* Stili per le Video Card */
+        .video-card {
+            flex: 1; 
+            min-width: 320px; 
+            display: flex; 
+            flex-direction: column; 
+            text-decoration: none; 
             transition: all 0.3s ease;
         }
-        .btn-primary {
-            background: var(--allmates-gradient);
-            color: #000;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(136, 140, 233, 0.4);
-        }
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--border-light);
-        }
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-        .btn-icon { width: 20px; height: 20px; }
-
-        /* Griglie Allineate */
-        .grid-3-cols {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-        .grid-2-cols {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-            align-items: center;
-        }
-        .grid-4-cols {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 32px;
-        }
-
-        /* Cards */
-        .qlik-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-light);
-            border-radius: 16px;
-            padding: 32px;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-        .qlik-card:hover {
+        .video-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(136, 140, 233, 0.5);
+            box-shadow: 0 15px 35px rgba(136, 140, 233, 0.2);
+            border-color: rgba(136, 140, 233, 0.4);
         }
-        .qlik-card img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 24px;
+        .video-thumbnail {
+            background: rgba(255,255,255,0.02); 
+            height: 200px; 
+            border-radius: 12px; 
+            margin-bottom: 24px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
         }
-        .qlik-card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            line-height: 1.3;
+        .video-card:hover .video-thumbnail {
+            background: rgba(136, 140, 233, 0.1);
         }
-        .qlik-card p {
-            font-size: 16px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin: 0;
+        .play-btn {
+            width: 64px; 
+            height: 64px; 
+            background: rgba(136, 140, 233, 0.8); 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            box-shadow: 0 0 20px rgba(136, 140, 233, 0.4);
+            transition: all 0.3s ease;
         }
-
-        /* Responsive */
-        @media (max-width: 991px) {
-            .grid-3-cols, .grid-2-cols { grid-template-columns: 1fr; gap: 40px; }
-            .grid-4-cols { grid-template-columns: 1fr 1fr; }
-            .hero-title { font-size: 48px !important; }
+        .video-card:hover .play-btn {
+            transform: scale(1.1);
+            background: rgb(136, 140, 233);
         }
-        @media (max-width: 767px) {
-            .grid-4-cols { grid-template-columns: 1fr; }
-            .hero-title { font-size: 36px !important; }
-            .btn-group { flex-direction: column; width: 100%; }
-            .btn-custom { width: 100%; }
+        .play-icon {
+            width: 0; 
+            height: 0; 
+            border-top: 12px solid transparent; 
+            border-bottom: 12px solid transparent; 
+            border-left: 18px solid white; 
+            margin-left: 6px;
         }
     </style>
 </head>
 <body>
 <div class="page-wrapper" style="background-color: #0b0b0f;">
 
-    <!-- HEADER ORIGINALE -->
+    <!-- HEADER ORIGINALE CON FIX Z-INDEX E MENU COMPANY -->
     <section class="navbar" style="position: relative; z-index: 999; background-color: #0b0b0f;">
         <div class="nav-container">
             <div class="navbar-wrap">
                 <div class="navbar-desktop-wrap">
                     <div class="navbar-desktop-left _02">
                         <a class="navbar-brand w-inline-block" href="/">
-                            <img alt="" class="navbar-brand-logo" height="20" loading="lazy" src="assets/69b8d4064fc6554839667630_allmates.ai-logo-white-colors.svg" width="50"/>
+                            <img alt="" class="navbar-brand-logo" height="20" loading="lazy" src="https://cdn.prod.website-files.com/69b8d32a03ce13513e236a94/69b8d4064fc6554839667630_allmates.ai-logo-white-colors.svg" width="50"/>
                         </a>
                     </div>
                     <div class="navbar-desktop-center">
@@ -183,6 +114,7 @@
                             <a class="nav-menu w-inline-block" href="/platform">
                                 <div class="paragraph-02 nav-text">Platform</div>
                             </a>
+                            
                             <!-- Dropdown Ressources -->
                             <div class="nav-dropdown w-dropdown" data-delay="0" data-hover="true">
                                 <div class="dropdown-toggle w-dropdown-toggle">
@@ -214,6 +146,7 @@
                                     </div>
                                 </nav>
                             </div>
+
                             <!-- Dropdown Company -->
                             <div class="nav-dropdown w-dropdown" data-delay="0" data-hover="true">
                                 <div class="dropdown-toggle w-dropdown-toggle">
@@ -245,6 +178,7 @@
                                     </div>
                                 </nav>
                             </div>
+
                             <a class="nav-menu w-inline-block" href="/pricing">
                                 <div class="paragraph-02 nav-text">Pricing</div>
                             </a>
@@ -267,206 +201,172 @@
         </div>
     </section>
 
-    <!-- 1. HERO SECTION -->
-    <section style="padding: 120px 0 80px; position: relative; overflow: hidden;">
-        <!-- Sfondo sfumato decorativo come l'originale -->
-        <div style="position: absolute; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: var(--allmates-gradient); filter: blur(150px); opacity: 0.1; z-index: 0; border-radius: 50%; pointer-events: none;"></div>
-        
-        <div class="custom-container text-center" style="position: relative; z-index: 1;">
-            <h1 class="hero-title" style="font-size: 64px; font-weight: 800; line-height: 1.1; margin-bottom: 24px; max-width: 900px; margin-left: auto; margin-right: auto; letter-spacing: -1px;">
-                Sblocca la tua Intelligenza.<br>
-                <span class="gradient-text">L'Action Layer per Qlik.</span>
-            </h1>
-            <p style="font-size: 20px; color: var(--text-muted); max-width: 760px; margin: 0 auto 48px; line-height: 1.6;">
-                Hai costruito un cervello analitico di prim'ordine con Qlik. Ora, dagli le mani per agire. Trasforma gli insight bloccati in risultati di business automatizzati con allmates.ai, l'Agentic Execution Layer definitivo per le aziende.
-            </p>
-            
-            <div class="btn-group" style="display: flex; gap: 16px; justify-content: center; margin-bottom: 80px;">
-                <a href="#" class="btn-custom btn-primary">
-                    Inizia la tua Prova Gratuita
-                    <img src="assets/69b8d32b03ce13513e236af2_Arrow.svg" alt="Arrow" class="btn-icon">
+    <!-- 1. HERO SECTION (Padding-top ridotto a 0px) -->
+    <section class="hero-v2" style="background-color: #0b0b0f; padding-top: 0px; padding-bottom: 60px;">
+        <div class="nav-container">
+            <div class="hero-v2-wrap" style="display: flex; flex-direction: column; align-items: left; text-align: left; gap: 40px;">
+                <div class="hero-v2-content" style="max-width: 900px;">
+                    <div style="color: #888CE9; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; font-size: 16px; letter-spacing: 2px; padding: 6px 16px; background: rgba(136, 140, 233, 0.1); border-radius: 30px; display: inline-block;">
+                        INTEGRAZIONE NATIVA
+                    </div>
+                    <h1 class="heading-13" style="margin-bottom: 30px; color: #fff; font-size: 54px; line-height: 1.1;">
+                        Abilita la Collaborative Intelligence con il nuovo Action Layer per Qlik
+                    </h1>
+                    <p class="paragraph-8" style="margin-bottom: 40px; font-size: 22px; line-height: 1.6; color: #a1a1aa;">
+                        Con Qlik hai sviluppato un'intelligenza analitica di livello mondiale. Ora, consentigli di entrare in azione. Trasforma gli insight intrappolati, in risultati di business automatizzati con <strong style="color: #fff;">allmates.ai</strong> — la piattaforma di Agentic AI definitiva per l'azienda.
+                    </p>
+                    <div>
+                        <!-- JS ScrollIntoView -->
+                        <a href="javascript:void(0)" onclick="document.getElementById('demo').scrollIntoView({behavior: 'smooth'});" style="background: linear-gradient(90deg, #9DE3FD 0%, #70AFED 25%, #888CE9 50%, #B393E3 70%, #E3AFA0 85%, #E28675 100%); color: #fff; padding: 16px 36px; border-radius: 50px; font-weight: bold; text-decoration: none; display: inline-block; font-size: 20px; box-shadow: 0 10px 25px rgba(136, 140, 233, 0.4); transition: transform 0.3s ease;">
+                            Vedi i Mates in azione
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-v2-image-wrap" style="width: 100%; max-width: 1100px;">
+                    <img src="https://allmates-it.github.io/landing-QV/69d66f410dd857972d40dc12_img-banner-qlik.jpg" alt="Qlik Action Layer" style="border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.8); width: 100%; height: auto;" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. I TRE BOX -->
+    <section style="background-color: #0b0b0f; padding: 50px 0;">
+        <div class="container-10 w-container" style="max-width: 1200px;">
+            <div style="display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap;">
+                
+                <!-- Box 1 -->
+                <div style="flex: 1; min-width: 300px; padding: 0 20px;">
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <span class="accent-line"></span>
+                        <h3 style="font-size: 24px; font-weight: 700; color: #fff; margin: 0;">Esecuzione Autonoma</h3>
+                    </div>
+                    <p style="color: #a1a1aa; font-size: 18px; line-height: 1.6;">
+                        Osserva i Mates mentre gestiscono le attività ripetitive e monotone per il tuo Team.
+                    </p>
+                </div>
+
+                <!-- Box 2 -->
+                <div style="flex: 1; min-width: 300px; padding: 0 20px; border-left: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <span class="accent-line"></span>
+                        <h3 style="font-size: 24px; font-weight: 700; color: #fff; margin: 0;">Velocità Agentica</h3>
+                    </div>
+                    <p style="color: #a1a1aa; font-size: 18px; line-height: 1.6;">
+                        Riduci il tempo che intercorre tra "l'intuizione" e "l'azione", da ore a millisecondi.
+                    </p>
+                </div>
+
+                <!-- Box 3 -->
+                <div style="flex: 1; min-width: 300px; padding: 0 20px; border-left: 1px solid rgba(255,255,255,0.1);">
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <span class="accent-line"></span>
+                        <h3 style="font-size: 24px; font-weight: 700; color: #fff; margin: 0;">Human-in-the-Loop</h3>
+                    </div>
+                    <p style="color: #a1a1aa; font-size: 18px; line-height: 1.6;">
+                        Mantieni il controllo strategico. I Mates elaborano strategie e azioni; tu le approvi in un clic.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. SEZIONE HUMAN CONNECTOR -->
+    <section style="background-color: #0b0b0f; padding: 70px 0; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container-10 w-container" style="max-width: 1200px;">
+            <div style="display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
+                
+                <!-- Immagine (Sinistra) -->
+                <div style="flex: 1; min-width: 400px;">
+                    <img src="https://allmates-it.github.io/shared-assets/images/img-human-connector.png" alt="Human Connector" style="width: 100%; height: auto; border-radius: 16px;" />
+                </div>
+
+                <!-- Testo (Destra) -->
+                <div style="flex: 1; min-width: 400px;">
+                    <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 8px; display: inline-block; color: #d4d4d8; font-size: 14px; margin-bottom: 24px;">
+                        Presentiamo i colleghi AI
+                    </div>
+                    <h2 style="font-size: 48px; font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 30px;">
+                        Smetti di fare da "Connettore Umano" tra i tuoi sistemi
+                    </h2>
+                    <p style="font-size: 20px; color: #a1a1aa; line-height: 1.6; margin-bottom: 20px;">
+                        Le intuizioni nascono in Qlik, ma il lavoro avviene in SAP, Salesforce e Teams. Attualmente, le tue risorse più preziose passano decine di ore a settimana agendo come "ponti umani", spostando manualmente i dati dalle dashboard ai sistemi operativi.
+                    </p>
+                    <p style="font-size: 20px; color: #a1a1aa; line-height: 1.6;">
+                        Questo è un freno operativo. È la più grande perdita nel ROI dei tuoi dati. Nell'era dell'AI Agentica, <strong class="gradient-text" style="font-weight: bold;">un cervello senza mani è uno svantaggio competitivo.</strong>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SEZIONE VIDEO (Card Cliccabili) -->
+    <section id="demo" style="background-color: #0b0b0f; padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container-10 w-container" style="max-width: 1200px;">
+            <div style="text-align: center; margin-bottom: 80px;">
+                <h2 style="font-size: 42px; font-weight: 800; color: #fff; margin-bottom: 20px;">Guarda i Mates in azione</h2>
+                <p style="font-size: 20px; color: #a1a1aa;">Scopri come l'Action Layer abilita l'automazione di flussi di lavoro complessi partendo dai dati di Qlik.</p>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap;">
+                
+                <!-- Video 1 -->
+                <a href="https://app.trupeer.ai/view/k4R29zUJ9/qlik-hcm-app-competitor-strategy-build-dashboard" target="_blank" class="glass-card video-card">
+                    <div class="video-thumbnail" style="position: relative; overflow: hidden;">
+                        <img src="https://allmates-it.github.io/landing-QV/Copertina%20-%20Strategic%20Planning%20Employee.JPG?v=4" alt="HR & Competitive Strategy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.85; transition: opacity 0.3s ease;">
+                        <div class="play-btn" style="z-index: 1;">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                    <h3 style="font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 15px;">HR & Competitive Strategy</h3>
+                    <p style="color: #a1a1aa; font-size: 16px; line-height: 1.5; margin: 0;">
+                        Dall'analisi delle risorse umane in Qlik alla creazione automatica di strategie e dashboard competitive.
+                    </p>
                 </a>
-                <a href="#" class="btn-custom btn-secondary">
-                    Richiedi un Action Audit di 30 giorni
-                    <img src="assets/69b8d32b03ce13513e236af2_Arrow.svg" alt="Arrow" class="btn-icon" style="filter: invert(1);">
+
+                <!-- Video 2 -->
+                <a href="https://app.trupeer.ai/view/AWvCsh9uy/qlik-procurement-app-and-glossary" target="_blank" class="glass-card video-card">
+                    <div class="video-thumbnail" style="position: relative; overflow: hidden;">
+                        <img src="https://allmates-it.github.io/landing-QV/Copertina%20-%20Procurement%20APP.JPG?v=4" alt="Procurement & Glossary Sync" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.85; transition: opacity 0.3s ease;">
+                        <div class="play-btn" style="z-index: 1;">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                    <h3 style="font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 15px;">Procurement & Glossary Sync</h3>
+                    <p style="color: #a1a1aa; font-size: 16px; line-height: 1.5; margin: 0;">
+                        I Mates analizzano i dati di procurement e aggiornano automaticamente i sistemi aziendali.
+                    </p>
                 </a>
-            </div>
 
-            <img src="assets/69d66f410dd857972d40dc12_img-banner-qlik.avif" alt="Qlik Dashboard" style="width: 100%; max-width: 1000px; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: 0 20px 40px rgba(0,0,0,0.5); display: block; margin: 0 auto;">
-        </div>
-    </section>
-
-    <!-- 2. 3 PICCOLE FEATURES -->
-    <section style="padding: 0 0 100px;">
-        <div class="custom-container grid-3-cols text-center">
-            <div>
-                <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Esecuzione Autonoma</h3>
-                <p style="color: var(--text-muted); font-size: 16px; line-height: 1.6;">I Mates gestiscono le attività ripetitive tra i tuoi vari sistemi, liberando il tuo team.</p>
-            </div>
-            <div>
-                <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Velocità degli Agenti</h3>
-                <p style="color: var(--text-muted); font-size: 16px; line-height: 1.6;">Riduci drasticamente il tempo che intercorre tra "insight" e "azione", passando da ore a millisecondi.</p>
-            </div>
-            <div>
-                <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px;">Human-in-the-Loop</h3>
-                <p style="color: var(--text-muted); font-size: 16px; line-height: 1.6;">Mantieni il controllo strategico. I Mates preparano le azioni; tu fornisci l'approvazione finale con un clic.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. STORY SECTION (Connettore Umano) -->
-    <section style="padding: 100px 0; border-top: 1px solid var(--border-light);">
-        <div class="custom-container grid-2-cols">
-            <div>
-                <div class="badge-pill">Ti presentiamo i tuoi colleghi AI</div>
-                <h2 style="font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 24px; letter-spacing: -1px;">
-                    Smetti di fare il "Connettore Umano" tra i tuoi Sistemi
-                </h2>
-                <p style="font-size: 18px; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px;">
-                    Gli insight si trovano in Qlik, ma il lavoro avviene in SAP, Salesforce e Teams. Attualmente, le tue risorse più preziose passano decine di ore a settimana a fare da "ponti umani", spostando manualmente i dati dalle dashboard ai sistemi operativi.
-                </p>
-                <p style="font-size: 18px; color: var(--text-muted); line-height: 1.6;">
-                    Questo è il freno operativo. È la principale causa di perdita di ROI sui dati. Nell'era dell'AI basata su Agenti, un cervello senza mani è uno svantaggio competitivo.
-                </p>
-            </div>
-            <div>
-                <img src="assets/69d670483955c0608bf1b485_img-story-qlik.avif" alt="Human Connector" style="width: 100%; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. MCP INTEGRATION -->
-    <section style="padding: 100px 0; border-top: 1px solid var(--border-light);">
-        <div class="custom-container">
-            <div class="text-center" style="max-width: 800px; margin: 0 auto 64px;">
-                <div class="badge-pill">Governance e Analisi</div>
-                <h2 style="font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 24px; letter-spacing: -1px;">Dai un paio di mani al tuo cervello Qlik</h2>
-                <p style="font-size: 18px; color: var(--text-muted); line-height: 1.6; margin-bottom: 48px;">
-                    Non si tratta di un generico chatbot che legge un PDF. I nostri agenti parlano nativamente Qlik. Sfruttando il nuovo Model Context Protocol (MCP), gli Agenti allmates si collegano direttamente al core del tuo Qlik Engine.
-                </p>
-                <img src="assets/69d67765013be304376c0286_img-banner-qlik-large.avif" alt="MCP Integration" style="width: 100%; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
-            </div>
-
-            <div class="grid-3-cols">
-                <div class="qlik-card">
-                    <img src="assets/69d674545488e7df826e836e_img-qlik-feature-1.avif" alt="Native Engine Access">
-                    <h3>Accesso Nativo al Motore</h3>
-                    <p>I Mates interrogano direttamente il Motore Associativo di Qlik per ottenere un contesto profondo e totalmente affidabile.</p>
-                </div>
-                <div class="qlik-card">
-                    <img src="assets/69d674618eb0f14814c4f0be_img-qlik-feature-2.avif" alt="On-the-Fly Hypercubes">
-                    <h3>Ipercubi On-the-Fly</h3>
-                    <p>Gli Agenti possono creare dinamicamente strutture dati per verificare e validare la logica prima di intraprendere qualsiasi azione.</p>
-                </div>
-                <div class="qlik-card">
-                    <img src="assets/69d67474d29938a123128583_img-qlik-feature-3.avif" alt="Governed by Design">
-                    <h3>Governance by Design</h3>
-                    <p>allmates.ai rispetta la sicurezza, i permessi e la data lineage esistenti nel tuo Qlik. Nessuna "Shadow AI", solo esecuzione governata.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. TIMELINE -->
-    <section style="padding: 100px 0; background-color: #111116; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light);">
-        <div class="custom-container">
-            <h2 class="text-center" style="font-size: 42px; font-weight: 800; margin-bottom: 64px; letter-spacing: -1px;">Da Insight ad Azione in 30 Giorni</h2>
-            <div class="grid-4-cols">
-                <div class="timeline-step">
-                    <span class="time" style="color: #9DE3FD;">GIORNO 1</span>
-                    <div class="title">Connetti</div>
-                    <p>Collega allmates al tuo Server MCP Qlik in meno di 10 minuti.</p>
-                </div>
-                <div class="timeline-step">
-                    <span class="time" style="color: #888CE9;">SETTIMANA 1</span>
-                    <div class="title">Audit</div>
-                    <p>Identifichiamo i tuoi 3 principali "Action Gaps" manuali con il più alto potenziale di ROI.</p>
-                </div>
-                <div class="timeline-step">
-                    <span class="time" style="color: #B393E3;">SETTIMANA 2</span>
-                    <div class="title">Automatizza</div>
-                    <p>Lancia il tuo primo Digital Co-worker per automatizzare un flusso di lavoro aziendale chiave.</p>
-                </div>
-                <div class="timeline-step">
-                    <span class="time" style="color: #E28675;">GIORNO 30</span>
-                    <div class="title">Misura</div>
-                    <p>Quantifica le ore manuali risparmiate e scala la tua Forza Lavoro Digitale.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. SCENARI REALI -->
-    <section style="padding: 100px 0;">
-        <div class="custom-container">
-            <h2 class="text-center" style="font-size: 42px; font-weight: 800; margin-bottom: 64px; letter-spacing: -1px;">Scenari Reali per i Digital Co-Workers</h2>
-            
-            <div class="grid-2-cols">
-                <div class="qlik-card" style="background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0) 100%); position: relative; overflow: hidden; padding: 48px 32px;">
-                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--allmates-gradient);"></div>
-                    <h3 style="font-size: 28px; margin-bottom: 8px;">Supply Chain Commander</h3>
-                    <div style="font-size: 18px; font-weight: 600; color: #9DE3FD; margin-bottom: 24px;">Riduzione del 90% dell'admin manuale</div>
-                    <p style="margin-bottom: 32px;">Risposta più rapida di 24 ore ai cambiamenti di mercato.</p>
-                    
-                    <div style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 12px; margin-bottom: 16px; border: 1px solid var(--border-light);">
-                        <span style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 8px;">Trigger</span>
-                        Una dashboard Qlik identifica un calo delle scorte del 15% in un hub regionale.
+                <!-- Video 3 -->
+                <a href="https://app.trupeer.ai/view/cr5M68QRw/allmates-consumer-sales-campaign" target="_blank" class="glass-card video-card">
+                    <div class="video-thumbnail" style="position: relative; overflow: hidden;">
+                        <img src="https://allmates-it.github.io/landing-QV/Copertina%20-%20Consumer%20Sales.JPG?v=4" alt="Sales to Marketing Action" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.85; transition: opacity 0.3s ease;">
+                        <div class="play-btn" style="z-index: 1;">
+                            <div class="play-icon"></div>
+                        </div>
                     </div>
-                    <div style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 12px; border: 1px solid var(--border-light);">
-                        <span style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 8px;">Azione Mate</span>
-                        Interroga i tempi di consegna tramite MCP, identifica il fornitore ottimale e prepara un Ordine di Acquisto in SAP.
-                    </div>
-                </div>
+                    <h3 style="font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 15px;">Sales to Marketing Action</h3>
+                    <p style="color: #a1a1aa; font-size: 16px; line-height: 1.5; margin: 0;">
+                        Attivazione automatica di campagne marketing basate sui trend di vendita rilevati in Qlik.
+                    </p>
+                </a>
 
-                <div class="qlik-card" style="background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0) 100%); position: relative; overflow: hidden; padding: 48px 32px;">
-                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--allmates-gradient);"></div>
-                    <h3 style="font-size: 28px; margin-bottom: 8px;">Il Guardiano della Compliance</h3>
-                    <div style="font-size: 18px; font-weight: 600; color: #9DE3FD; margin-bottom: 24px;">Settimane di audit manuali risparmiate</div>
-                    <p style="margin-bottom: 32px;">Trasformate in un processo automatizzato quasi istantaneo.</p>
-                    
-                    <div style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 12px; margin-bottom: 16px; border: 1px solid var(--border-light);">
-                        <span style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 8px;">Trigger</span>
-                        Una nuova App Qlik viene pubblicata in uno stream di produzione.
-                    </div>
-                    <div style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 12px; border: 1px solid var(--border-light);">
-                        <span style="display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 8px;">Azione Mate</span>
-                        Legge nativamente lo script di caricamento, segnala i rischi per i dati PII e genera automaticamente un report di audit.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. BOTTOM CTA -->
-    <section class="text-center" style="padding: 40px 0 120px;">
-        <div class="custom-container">
-            <div style="display: flex; justify-content: center; gap: 24px; margin-bottom: 48px; flex-wrap: wrap;">
-                <img src="assets/69bdbfbc0e5f9de7b3f914d6_mate-feed-3.png" alt="Feed" style="height: 80px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);">
-                <img src="assets/69bdbfbc30c9fab3c26e7323_mate-feed-5.png" alt="Feed" style="height: 80px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);">
-                <img src="assets/69bdc41cd21ba2363275a65c_mate-feed-13.png" alt="Feed" style="height: 80px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);">
             </div>
             
-            <p style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">Connetti la tua prima app Qlik <strong class="gradient-text" style="font-weight: 700;">in pochi minuti</strong>.</p>
-            <h2 style="font-size: 56px; font-weight: 800; line-height: 1.1; margin-bottom: 24px; letter-spacing: -1px;">
-                Smetti di Rispondere a Domande.<br>Inizia a Fare il Lavoro.
-            </h2>
-            <p style="font-size: 20px; color: var(--text-muted); max-width: 700px; margin: 0 auto 48px; line-height: 1.6;">
-                Unisciti al 18% delle aziende che stanno passando dall'"Intelligenza Passiva" all'Esecuzione basata su Agenti. Dai ai tuoi dati il potere di far progredire il tuo business.
-            </p>
-            
-            <a href="#" class="btn-custom btn-primary" style="padding: 20px 40px; font-size: 18px;">
-                Inizia Ora la tua Prova Gratuita
-                <img src="assets/69b8d32b03ce13513e236af2_Arrow.svg" alt="Arrow" class="btn-icon">
-            </a>
+            <div style="text-align: center; margin-top: 80px;">
+                <a href="https://calendar.app.google/mj5VAfeoNfPHYB7V7" style="background: linear-gradient(90deg, #9DE3FD 0%, #70AFED 25%, #888CE9 50%, #B393E3 70%, #E3AFA0 85%, #E28675 100%); color: #fff; padding: 16px 36px; border-radius: 50px; font-weight: bold; text-decoration: none; display: inline-block; font-size: 22px; box-shadow: 0 10px 25px rgba(136, 140, 233, 0.4); transition: transform 0.3s ease;" target="_blank">Parla con un esperto</a>
+            </div>
         </div>
     </section>
 
-    <!-- FOOTER ORIGINALE -->
+    <!-- FOOTER COMPLETO -->
     <section class="footer" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 60px; padding-bottom: 40px; background-color: #0b0b0f;">
         <div class="container">
             <div class="footer-wrap" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
                 <div class="footer-left" style="max-width: 300px;">
-                    <img alt="Allmates Logo" class="image" src="assets/69b8d4064fc6554839667630_allmates.ai-logo-white-colors.svg" style="margin-bottom: 20px;"/>
+                    <img alt="Allmates Logo" class="image" src="https://cdn.prod.website-files.com/69b8d32a03ce13513e236a94/69b8d4064fc6554839667630_allmates.ai-logo-white-colors.svg" style="margin-bottom: 20px;"/>
                     <div class="paragraph-02 text-grey">Harness the collective power of AI to elevate your team's productivity.</div>
                 </div>
                 
@@ -515,16 +415,13 @@
             
             <div class="copyright-wrap" style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
                 <div class="paragraph-02 copyright-text text-grey">© 2026 allmates.ai - All rights reserved</div>
-                <div class="paragraph-02 copyright-text text-grey" style="margin-top: 10px;">
-                    <strong style="color: #70AFED;">rAIsing</strong> - Master Reseller e Distributore Esclusivo allmates per l'Italia
-                </div>
             </div>
         </div>
     </section>
 
 </div>
 
-<!-- SCRIPT WEBFLOW -->
+<!-- SCRIPT WEBFLOW PER FAR FUNZIONARE I MENU A TENDINA -->
 <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript" crossorigin="anonymous"></script>
 <script src="https://assets.website-files.com/69b8d32a03ce13513e236a94/js/webflow.js" type="text/javascript"></script>
 
